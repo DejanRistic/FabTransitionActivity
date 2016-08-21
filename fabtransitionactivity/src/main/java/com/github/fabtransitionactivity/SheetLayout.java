@@ -21,7 +21,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import io.codetail.animation.SupportAnimator;
 
 public class SheetLayout extends FrameLayout {
 
@@ -244,30 +243,28 @@ public class SheetLayout extends FrameLayout {
 
     private void expandPreLollipop(int x, int y, float startRadius, float endRadius) {
 
-        SupportAnimator toolbarExpandAnim = io.codetail.animation.ViewAnimationUtils
+        Animator toolbarExpandAnim = io.codetail.animation.ViewAnimationUtils
                 .createCircularReveal(
                         mFabExpandLayout, x, y, startRadius, endRadius);
         toolbarExpandAnim.setDuration(animationDuration);
-        toolbarExpandAnim.addListener(new SupportAnimator.AnimatorListener() {
+        toolbarExpandAnim.addListener(new Animator.AnimatorListener() {
             @Override
-            public void onAnimationStart() {
+            public void onAnimationStart(Animator animation) {
                 mFabExpandLayout.setAlpha(1f);
             }
 
             @Override
-            public void onAnimationEnd() {
-                //mFab.setAlpha(1f);
+            public void onAnimationEnd(Animator animation) {
                 expandAnimationEnd();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationCancel() {
-
-            }
-
-            @Override
-            public void onAnimationRepeat() {
+            public void onAnimationRepeat(Animator animation) {
 
             }
         });
@@ -295,28 +292,29 @@ public class SheetLayout extends FrameLayout {
 
     private void contractPreLollipop(int x, int y, float startRadius, float endRadius) {
 
-        final SupportAnimator toolbarContractAnim = io.codetail.animation.ViewAnimationUtils
+        final Animator toolbarContractAnim = io.codetail.animation.ViewAnimationUtils
                 .createCircularReveal(mFabExpandLayout, x, y, startRadius, endRadius);
         toolbarContractAnim.setDuration(animationDuration);
 
-        toolbarContractAnim.addListener(new SupportAnimator.AnimatorListener() {
+        toolbarContractAnim.addListener(new Animator.AnimatorListener() {
+
             @Override
-            public void onAnimationStart() {
+            public void onAnimationStart(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationEnd() {
+            public void onAnimationEnd(Animator animation) {
                 contractAnimationEnd();
             }
 
             @Override
-            public void onAnimationCancel() {
+            public void onAnimationCancel(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationRepeat() {
+            public void onAnimationRepeat(Animator animation) {
 
             }
         });
