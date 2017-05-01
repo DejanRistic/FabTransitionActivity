@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
@@ -93,8 +92,8 @@ public class SheetLayout extends FrameLayout {
         mFabExpandLayout.setGravity(getGravity(containerGravity));
     }
 
-    public void setFab(ImageView imageView) {
-        mFab = imageView;
+    public void setFab(View view) {
+        mFab = view;
     }
 
     private int getGravity(int gravityEnum) {
