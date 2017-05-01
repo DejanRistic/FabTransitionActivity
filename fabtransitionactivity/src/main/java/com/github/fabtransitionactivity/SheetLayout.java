@@ -35,7 +35,7 @@ public class SheetLayout extends FrameLayout {
     }
 
     private LinearLayout mFabExpandLayout;
-    private ImageView mFab;
+    private View mFab;
 
     int mFabType = FAB_CIRCLE;
     boolean mAnimatingFab = false;
@@ -322,13 +322,13 @@ public class SheetLayout extends FrameLayout {
         toolbarContractAnim.start();
     }
 
-    private void expandAnimationEnd(){
+    private void expandAnimationEnd() {
         mAnimatingFab = false;
         if (mListener != null)
             mListener.onFabAnimationEnd();
     }
 
-    private void contractAnimationEnd(){
+    private void contractAnimationEnd() {
         mFab.setAlpha(1f);
         mFabExpandLayout.setAlpha(0f);
 
@@ -337,7 +337,7 @@ public class SheetLayout extends FrameLayout {
         mFabExpandLayout.setAlpha(1f);
     }
 
-    private float calculateStartRadius(int x, int y){
+    private float calculateStartRadius(int x, int y) {
         return (float) Math.hypot(
                 Math.max(x, mFabExpandLayout.getWidth() - x),
                 Math.max(y, mFabExpandLayout.getHeight() - y));
